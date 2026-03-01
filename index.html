@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YAML Plus JSON</title>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: #1e1e2e;
+      color: #cdd6f4;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #cba6f7;
+      letter-spacing: -0.5px;
+    }
+
+    header p.tagline {
+      margin-top: 0.75rem;
+      font-size: 1.1rem;
+      color: #a6adc8;
+    }
+
+    main {
+      max-width: 680px;
+      width: 100%;
+      background: #313244;
+      border-radius: 12px;
+      padding: 2rem 2.5rem;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+    }
+
+    main p {
+      line-height: 1.7;
+      color: #cdd6f4;
+      margin-bottom: 1.25rem;
+    }
+
+    main ul {
+      list-style: none;
+      margin-bottom: 1.5rem;
+      padding: 0;
+    }
+
+    main ul li {
+      padding: 0.4rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+      color: #cdd6f4;
+      line-height: 1.6;
+    }
+
+    main ul li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: #cba6f7;
+    }
+
+    .cta {
+      display: inline-block;
+      margin-top: 0.5rem;
+      padding: 0.75rem 1.75rem;
+      background: #cba6f7;
+      color: #1e1e2e;
+      font-weight: 600;
+      font-size: 1rem;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.2s ease, transform 0.1s ease;
+    }
+
+    .cta:hover {
+      background: #b4befe;
+      transform: translateY(-1px);
+    }
+
+    footer {
+      margin-top: 2.5rem;
+      font-size: 0.85rem;
+      color: #6c7086;
+      text-align: center;
+    }
+
+    footer a {
+      color: #89b4fa;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>YAML Plus JSON</h1>
+    <p class="tagline">Effortlessly convert between YAML and JSON in your editor</p>
+  </header>
+
+  <main>
+    <p>
+      <strong>YAML Plus JSON</strong> is an editor extension that makes it simple to convert files
+      and selections back and forth between <strong>YAML</strong> and <strong>JSON</strong> — right
+      inside your editor, without leaving your workflow.
+    </p>
+
+    <p>Key features include:</p>
+    <ul>
+      <li>Convert entire files or selected text from YAML → JSON</li>
+      <li>Convert entire files or selected text from JSON → YAML</li>
+      <li>Works directly from the command palette and explorer context menu</li>
+      <li>Lightweight, fast, and easy to use</li>
+    </ul>
+
+    <p>
+      The extension is currently available for <strong>Visual Studio Code</strong>. Install it
+      from the VS Code Marketplace and start converting in seconds:
+    </p>
+
+    <a
+      class="cta"
+      href="https://marketplace.visualstudio.com/items?itemName=hilleer.yaml-plus-json"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Install for VS Code
+    </a>
+  </main>
+
+  <footer>
+    <p>
+      View the source on
+      <a href="https://github.com/hilleer/vscode-yaml-plus-json" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </p>
+  </footer>
+</body>
+</html>
