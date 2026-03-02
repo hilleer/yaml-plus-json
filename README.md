@@ -32,7 +32,7 @@ Then open `http://localhost:8080` in your browser.
 
 ## GitHub Pages
 
-The site is deployed automatically via [GitHub Pages](https://docs.github.com/en/pages/quickstart). It is served from the `main` branch root directory.
+The site is served from the `main` branch root directory via [GitHub Pages](https://docs.github.com/en/pages/quickstart).
 
 To enable GitHub Pages for this repository:
 
