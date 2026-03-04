@@ -32,6 +32,8 @@
       --footer-text:  #6c7086;
       --footer-link:  #89b4fa;
       --cta-text:     #1e1e2e;
+      --code-bg:      #181825;
+      --border:       #45475a;
     }
 
     @media (prefers-color-scheme: light) {
@@ -46,6 +48,8 @@
         --footer-text:  #6c7086;
         --footer-link:  #2563eb;
         --cta-text:     #ffffff;
+        --code-bg:      #e6e9ef;
+        --border:       #bcc0cc;
       }
     }
 
@@ -63,13 +67,13 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
+      gap: 2.5rem;
       padding: 2rem;
     }
 
     header {
       text-align: center;
-      margin-bottom: 2.5rem;
     }
 
     header h1 {
@@ -144,8 +148,108 @@
       outline-offset: 3px;
     }
 
+    .section {
+      max-width: 680px;
+      width: 100%;
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 2rem 2.5rem;
+      box-shadow: 0 4px 24px var(--card-shadow);
+    }
+
+    .section h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 1.25rem;
+    }
+
+    .steps {
+      list-style: none;
+      counter-reset: steps;
+      padding: 0;
+      margin-bottom: 1rem;
+    }
+
+    .steps li {
+      counter-increment: steps;
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+      padding: 0.5rem 0;
+      line-height: 1.6;
+      color: var(--text);
+    }
+
+    .steps li::before {
+      content: counter(steps);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 1.6rem;
+      height: 1.6rem;
+      border-radius: 50%;
+      background: var(--accent);
+      color: var(--cta-text);
+      font-size: 0.8rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .steps-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .steps-group h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .steps-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 0.75rem;
+    }
+
+    kbd {
+      display: inline-block;
+      padding: 0.15rem 0.45rem;
+      font-size: 0.8rem;
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--text);
+    }
+
+    .demo-media {
+      min-height: 200px;
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0.75rem;
+    }
+
+    .demo-media img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .demo-caption {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
     footer {
-      margin-top: 2.5rem;
+      margin-top: 0;
       font-size: 0.85rem;
       color: var(--footer-text);
       text-align: center;
@@ -167,7 +271,15 @@
     <p class="tagline">Effortlessly convert between YAML and JSON in your editor</p>
   </header>
 
-  <main>
+  <section id="demo" class="section">
+    <h2>See It in Action</h2>
+    <div class="demo-media">
+      <img src="images/demo.gif" alt="Screen recording showing a YAML file being converted to JSON via the VS Code command palette" />
+    </div>
+    <p class="demo-caption">Converting between YAML and JSON using the command palette</p>
+  </section>
+
+  <main id="features">
     <p>
       <strong>YAML Plus JSON</strong> is an editor extension that makes it simple to convert files
       and selections back and forth between <strong>YAML</strong> and <strong>JSON</strong> — right
@@ -183,8 +295,8 @@
     </ul>
 
     <p>
-      The extension is currently available for <strong>Visual Studio Code</strong>. Install it
-      from the VS Code Marketplace and start converting in seconds:
+      Currently available for <strong>Visual Studio Code</strong>, with support for more editors
+      planned. Note that available features may vary between editors.
     </p>
 
     <a
@@ -196,6 +308,46 @@
       Install for VS Code
     </a>
   </main>
+
+  <section id="how-to" class="section">
+    <h2>What You Can Do</h2>
+
+    <div class="steps-group">
+      <h3>Rename a file and the content converts automatically</h3>
+      <p class="steps-desc">Rename <code>config.yaml</code> to <code>config.json</code> and the extension rewrites the file contents to match — no manual conversion needed.</p>
+      <ol class="steps">
+        <li>Right-click a <code>.yaml</code> or <code>.json</code> file in the Explorer</li>
+        <li>Rename it with the opposite extension</li>
+        <li>The file content is automatically converted</li>
+      </ol>
+    </div>
+
+    <div class="steps-group">
+      <h3>Comments survive the round-trip</h3>
+      <p class="steps-desc">YAML comments (<code># my comment</code>) are preserved when converting to JSONC as line comments (<code>// my comment</code>), so you don't lose context switching formats.</p>
+      <ol class="steps">
+        <li>Open a <code>.yaml</code> file with comments</li>
+        <li>Run <kbd>Ctrl+Shift+P</kbd> → <strong>Convert to JSON</strong></li>
+        <li>Comments appear as <code>// …</code> in the resulting <code>.jsonc</code> file</li>
+      </ol>
+    </div>
+
+    <div class="steps-group">
+      <h3>Convert an entire folder at once</h3>
+      <p class="steps-desc">No need to open files one by one — right-click any directory and convert all YAML or JSON files inside it in a single action.</p>
+      <ol class="steps">
+        <li>Right-click a folder in the Explorer panel</li>
+        <li>Select <strong>Convert YAML files to JSON</strong> (or vice versa)</li>
+        <li>All matching files in the directory are converted</li>
+      </ol>
+    </div>
+
+    <p class="steps-desc">
+      And more — feature availability varies by editor. See the
+      <a href="https://github.com/hilleer/vscode-yaml-plus-json#readme" target="_blank" rel="noopener noreferrer">full README</a>
+      for a complete list of commands and options.
+    </p>
+  </section>
 
   <footer>
     <p>
